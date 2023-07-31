@@ -26,7 +26,7 @@ class GameManager(private val gameListener: (winner: Boolean?) -> Unit) : Game {
     }
 
     private fun checkForWin(row: Int, col: Int) {
-        // Check for horizontal win
+
         var horizontalWin = true
         for (c in 0 until field.size) {
             if (field.get(row, c) != turn) {
@@ -35,7 +35,6 @@ class GameManager(private val gameListener: (winner: Boolean?) -> Unit) : Game {
             }
         }
 
-        // Check for vertical win
         var verticalWin = true
         for (r in 0 until field.size) {
             if (field.get(r, col) != turn) {
@@ -44,7 +43,6 @@ class GameManager(private val gameListener: (winner: Boolean?) -> Unit) : Game {
             }
         }
 
-        // Check for diagonal win (top-left to bottom-right)
         var diagonalWin1 = true
         if (row == col) {
             for (i in 0 until field.size) {
@@ -57,7 +55,6 @@ class GameManager(private val gameListener: (winner: Boolean?) -> Unit) : Game {
             diagonalWin1 = false
         }
 
-        // Check for diagonal win (top-right to bottom-left)
         var diagonalWin2 = true
         if (row + col == field.size - 1) {
             for (i in 0 until field.size) {
@@ -70,13 +67,11 @@ class GameManager(private val gameListener: (winner: Boolean?) -> Unit) : Game {
             diagonalWin2 = false
         }
 
-        // Check if any of the win conditions are met
         if (horizontalWin || verticalWin || diagonalWin1 || diagonalWin2) {
             isFinished = true
             winner = turn
             gameListener(winner)
         } else if (fieldIsFull()) {
-            // If the field is full and no winner, it's a draw
             isFinished = true
             winner = null
             gameListener(winner)

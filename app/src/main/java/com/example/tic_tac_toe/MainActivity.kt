@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         game = GameManager {
             val resultMessage = when(it) {
-                true -> "Победитель - Х"
-                false -> "Победитель - 0"
-                null -> "Ничья"
+                true -> R.string.cross_win.toString()
+                false -> R.string.zero_win.toString()
+                null -> R.string.draw.toString()
             }
             createDialog(resultMessage)
         }

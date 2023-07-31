@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">tic-tac-toe</string>
+    <string name="cross_win">Победитель-Х</string>
+    <string name="zero_win">Победитель-0</string>
+    <string name="draw">Ничья</string>
+
 </resources>
