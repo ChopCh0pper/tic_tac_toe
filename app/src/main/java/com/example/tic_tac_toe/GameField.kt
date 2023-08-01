@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tic_tac_toe.databinding.ActivityMainBinding
 import com.example.tic_tac_toe.game.GameManager
 
-class MainActivity : AppCompatActivity() {
+class GameField : AppCompatActivity() {
     private lateinit var bv: ActivityMainBinding
     private lateinit var game: GameManager
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         game = GameManager {
             val resultMessage = when(it) {
-                true -> R.string.cross_win.toString()
-                false -> R.string.zero_win.toString()
-                null -> R.string.draw.toString()
+                true -> "Победитель-Х"
+                false -> "Победитель-0"
+                null -> "Ничья"
             }
             createDialog(resultMessage)
         }
